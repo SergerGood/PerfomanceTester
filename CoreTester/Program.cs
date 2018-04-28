@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Security.Cryptography;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes.Jobs;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Engines;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
 
 namespace CoreTester
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var typeMemoryTester = new TypeMemoryBenchmark();
+            typeMemoryTester.GlobalSetup();
+            typeMemoryTester.CreateCollectionOfStructs();
+
+            var summary = BenchmarkRunner.Run<TypeMemoryBenchmark>();
         }
     }
 }
