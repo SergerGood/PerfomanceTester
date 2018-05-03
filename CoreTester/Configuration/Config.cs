@@ -11,17 +11,21 @@ namespace CoreTester.Configuration
     {
         public Config()
         {
-            Add(new MemoryDiagnoser());
+            Add(MemoryDiagnoser.Default);
 
             Job clr471Job = Job.Clr
                 .With(CsProjClassicNetToolchain.Net471)
+                .WithDefaultJob();
+
+            Job clr461Job = Job.Clr
+                .With(CsProjClassicNetToolchain.Net461)
                 .WithDefaultJob();
 
             Job coreJob = Job.Core
                 .With(CsProjCoreToolchain.NetCoreApp20)
                 .WithDefaultJob();
 
-            Add(coreJob, clr471Job);
+            Add(coreJob, clr471Job, clr461Job);
         }
     }
 }

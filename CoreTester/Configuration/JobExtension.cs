@@ -12,8 +12,8 @@ namespace CoreTester.Configuration
             return job.With(RunStrategy.ColdStart)
                 .With(Platform.X64)
                 .WithLaunchCount(1)
-                .WithTargetCount(1)
-                .WithWarmupCount(0);
+                .WithTargetCount(3)
+                .WithWarmupCount(3);
         }
     }
 }

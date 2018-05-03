@@ -9,4 +9,11 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.10.14" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
+    <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.10.14" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.10.14" />
+  </ItemGroup>
 </Project>
