@@ -18,7 +18,7 @@ namespace CoreTester.Configuration
                 .WithDefaultJob();
 
             Job clr461Job = Job.Clr
-                .With(CsProjClassicNetToolchain.Net461)
+                .With(CsProjClassicNetToolchain.Net462)
                 .WithDefaultJob();
 
             Job coreJob = Job.Core
