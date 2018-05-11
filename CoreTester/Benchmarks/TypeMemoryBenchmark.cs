@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using CoreTester.Configuration;
 
-namespace CoreTester
+namespace CoreTester.Benchmarks
 {
     [Config(typeof(Config))]
     public class TypeMemoryBenchmark

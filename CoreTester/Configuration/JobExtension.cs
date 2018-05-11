@@ -13,7 +13,7 @@ namespace CoreTester.Configuration
                 .With(Platform.X64)
                 .WithLaunchCount(1)
                 .WithTargetCount(5)
-                .WithWarmupCount(1);
+                .WithWarmupCount(2);
         }
     }
 }
