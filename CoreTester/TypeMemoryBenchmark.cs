@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using CoreTester.Configuration;
 
@@ -7,39 +8,66 @@ namespace CoreTester
     [Config(typeof(Config))]
     public class TypeMemoryBenchmark
     {
-        private PointClass[] collectionOfClasses;
-        private PointStruct[] collectionOfStructs;
+        private PointClass[] arrayOfClasses;
+        private PointStruct[] arrayOfStructs;
 
-        [Params(1_000_000, 10_000_000)]
+        private List<PointClass> listOfClasses;
+        private List<PointStruct> listOfStructs;
+
+        [Params(10_000_000)]
         public int ElementsCount { get; set; }
 
         [Benchmark]
-        public PointClass[] CreateCollectionOfClasses()
+        public PointClass[] CreateArrayOfClasses()
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                collectionOfClasses[i] = new PointClass { X = i, Y = i };
+                arrayOfClasses[i] = new PointClass { X = i, Y = i };
             }
 
-            return collectionOfClasses;
+            return arrayOfClasses;
         }
 
         [Benchmark]
-        public PointStruct[] CreateCollectionOfStructs()
+        public PointStruct[] CreateArrayOfStructs()
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                collectionOfStructs[i] = new PointStruct { X = i, Y = i };
+                arrayOfStructs[i] = new PointStruct { X = i, Y = i };
             }
 
-            return collectionOfStructs;
+            return arrayOfStructs;
+        }
+
+        [Benchmark]
+        public List<PointClass> CreateListOfClasses()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                listOfClasses.Add(new PointClass { X = i, Y = i });
+            }
+
+            return listOfClasses;
+        }
+
+        [Benchmark]
+        public List<PointStruct> CreateListOfStructs()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                listOfStructs.Add(new PointStruct { X = i, Y = i });
+            }
+
+            return listOfStructs;
         }
 
         [GlobalSetup]
         public void GlobalSetup()
         {
-            collectionOfClasses = new PointClass[ElementsCount];
-            collectionOfStructs = new PointStruct[ElementsCount];
+            arrayOfClasses = new PointClass[ElementsCount];
+            arrayOfStructs = new PointStruct[ElementsCount];
+            listOfClasses = new List<PointClass>(ElementsCount);
+            listOfStructs = new List<PointStruct>(ElementsCount);
         }
     }
 }

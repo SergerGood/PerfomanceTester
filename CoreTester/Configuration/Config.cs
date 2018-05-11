@@ -17,15 +17,11 @@ namespace CoreTester.Configuration
                 .With(CsProjClassicNetToolchain.Net471)
                 .WithDefaultJob();
 
-            Job clr461Job = Job.Clr
-                .With(CsProjClassicNetToolchain.Net462)
-                .WithDefaultJob();
-
             Job coreJob = Job.Core
                 .With(CsProjCoreToolchain.NetCoreApp20)
                 .WithDefaultJob();
 
-            Add(coreJob, clr471Job, clr461Job);
+            Add(coreJob, clr471Job);
         }
     }
 }
