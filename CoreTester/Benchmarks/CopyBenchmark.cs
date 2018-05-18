@@ -46,19 +46,19 @@ namespace CoreTester
             return element;
         }
 
-        private void CopyClassesCore(PointClass element)
+        private PointClass CopyClassesCore(PointClass element)
         {
-            
+            return element;
         }
 
-        private void CopyRefStructCore(in PointStruct element)
+        private PointStruct CopyRefStructCore(in PointStruct element)
         {
-            
+            return element;
         }
 
-        private void CopyStructCore(PointStruct element)
+        private PointStruct CopyStructCore(PointStruct element)
         {
-            
+            return element;
         }
     }
 }

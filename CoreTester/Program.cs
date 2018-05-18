@@ -8,9 +8,14 @@ namespace CoreTester
     {
         private static void Main(string[] args)
         {
-            //BenchmarkRunner.Run<TypeMemoryBenchmark>();
-            //BenchmarkRunner.Run<CopyBenchmark>();
-            BenchmarkRunner.Run<CopyWithUseBenchmark>();
+            var switcher = new BenchmarkSwitcher(new[]
+            {
+                typeof(TypeMemoryBenchmark),
+                typeof(CopyBenchmark),
+                typeof(CopyWithUseBenchmark)
+            });
+
+            switcher.Run(args);
         }
     }
 }

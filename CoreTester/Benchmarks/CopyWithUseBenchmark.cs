@@ -13,10 +13,10 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointClass CopyClasses()
         {
-            PointClass element = new PointClass { X = 1 };
+            var element = new PointClass { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                Calculate(element);
+                var result = Calculate(element);
             }
 
             return element;
@@ -25,10 +25,10 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointStruct CopyRefStruct()
         {
-            PointStruct element = new PointStruct { X = 1 };
+            var element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                CalculateRef(in element);
+                var result = CalculateRef(in element);
             }
 
             return element;
@@ -37,10 +37,10 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointStruct CopyStruct()
         {
-            PointStruct element = new PointStruct { X = 1 };
+            var element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                Calculate(element);
+                var result = Calculate(element);
             }
 
             return element;
@@ -51,12 +51,12 @@ namespace CoreTester.Benchmarks
             return element.X + element.Y;
         }
 
-        private int CalculateRef(in PointStruct element)
+        private int Calculate(PointStruct element)
         {
             return element.X + element.Y;
         }
 
-        private int Calculate(PointStruct element)
+        private int CalculateRef(in PointStruct element)
         {
             return element.X + element.Y;
         }
