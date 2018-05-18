@@ -10,7 +10,7 @@ namespace CoreTester
         {
             var switcher = new BenchmarkSwitcher(new[]
             {
-                typeof(TypeMemoryBenchmark),
+                typeof(CollectionsBenchmark),
                 typeof(CopyBenchmark),
                 typeof(CopyWithUseBenchmark)
             });

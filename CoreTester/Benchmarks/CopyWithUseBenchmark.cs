@@ -11,54 +11,60 @@ namespace CoreTester.Benchmarks
         public int ElementsCount { get; set; }
 
         [Benchmark]
-        public PointClass CopyClasses()
+        public PointClass Classes()
         {
             var element = new PointClass { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                var result = Calculate(element);
+                Calculate(element);
             }
 
             return element;
         }
 
         [Benchmark]
-        public PointStruct CopyRefStruct()
+        public PointStruct RefStructes()
         {
             var element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                var result = CalculateRef(in element);
+                CalculateRef(in element);
             }
 
             return element;
         }
 
         [Benchmark]
-        public PointStruct CopyStruct()
+        public PointStruct Structes()
         {
             var element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                var result = Calculate(element);
+                Calculate(element);
             }
 
             return element;
         }
 
-        private int Calculate(PointClass element)
+        private PointClass Calculate(PointClass element)
         {
-            return element.X + element.Y;
+            int calc = element.X + element.Y;
+
+            return element;
         }
 
-        private int Calculate(PointStruct element)
+        private PointStruct Calculate(PointStruct element)
         {
-            return element.X + element.Y;
+            int calc = element.X + element.Y;
+
+            return element;
         }
 
-        private int CalculateRef(in PointStruct element)
+        private PointStruct CalculateRef(in PointStruct element)
         {
-            return element.X + element.Y;
+            int calc = element.X + element.Y;
+
+            return element;
         }
     }
 }

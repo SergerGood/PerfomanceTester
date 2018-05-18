@@ -6,7 +6,7 @@ using CoreTester.Configuration;
 namespace CoreTester.Benchmarks
 {
     [Config(typeof(Config))]
-    public class TypeMemoryBenchmark
+    public class CollectionsBenchmark
     {
         private PointClass[] arrayOfClasses;
         private PointStruct[] arrayOfStructs;

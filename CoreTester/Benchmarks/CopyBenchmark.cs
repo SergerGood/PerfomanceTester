@@ -11,52 +11,52 @@ namespace CoreTester
         public int ElementsCount { get; set; }
 
         [Benchmark]
-        public PointClass CopyClasses()
+        public PointClass Classes()
         {
             PointClass element = new PointClass { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                CopyClassesCore(element);
+                CopyClass(element);
             }
 
             return element;
         }
 
         [Benchmark]
-        public PointStruct CopyRefStruct()
+        public PointStruct RefStructes()
         {
             PointStruct element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                CopyRefStructCore(in element);
+                CopyRefStruct(in element);
             }
 
             return element;
         }
 
         [Benchmark]
-        public PointStruct CopyStruct()
+        public PointStruct Structes()
         {
             PointStruct element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                CopyStructCore(element);
+                CopyStruct(element);
             }
 
             return element;
         }
 
-        private PointClass CopyClassesCore(PointClass element)
+        private PointClass CopyClass(PointClass element)
         {
             return element;
         }
 
-        private PointStruct CopyRefStructCore(in PointStruct element)
+        private PointStruct CopyRefStruct(in PointStruct element)
         {
             return element;
         }
 
-        private PointStruct CopyStructCore(PointStruct element)
+        private PointStruct CopyStruct(PointStruct element)
         {
             return element;
         }
