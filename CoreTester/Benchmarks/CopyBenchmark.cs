@@ -28,7 +28,7 @@ namespace CoreTester
             PointStruct element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
-                CopyRefStruct(in element);
+                CopyRefStruct(element);
             }
 
             return element;
