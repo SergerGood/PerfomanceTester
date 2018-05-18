@@ -23,9 +23,9 @@ namespace CoreTester.Benchmarks
         }
 
         [Benchmark]
-        public PointReadonlyStruct RefReadonlyStructes()
+        public PointStruct Structes()
         {
-            var element = new PointReadonlyStruct(1, 0);
+            var element = new PointStruct { X = 1 };
             for (int i = 0; i < ElementsCount; i++)
             {
                 Calculate(element);
@@ -47,9 +47,9 @@ namespace CoreTester.Benchmarks
         }
 
         [Benchmark]
-        public PointStruct Structes()
+        public PointReadonlyStruct RefReadonlyStructes()
         {
-            var element = new PointStruct { X = 1 };
+            var element = new PointReadonlyStruct(1, 0);
             for (int i = 0; i < ElementsCount; i++)
             {
                 Calculate(element);
