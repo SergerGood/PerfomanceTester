@@ -13,7 +13,7 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointClass Classes()
         {
-            var element = new PointClass { X = 1 };
+            var element = new PointClass(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 Calculate(element);
@@ -25,7 +25,7 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointStruct Structes()
         {
-            var element = new PointStruct { X = 1 };
+            var element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 Calculate(element);
@@ -37,7 +37,7 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointStruct RefStructes()
         {
-            var element = new PointStruct { X = 1 };
+            var element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 CalculateRef(element);
@@ -49,7 +49,7 @@ namespace CoreTester.Benchmarks
         [Benchmark]
         public PointReadonlyStruct RefReadonlyStructes()
         {
-            var element = new PointReadonlyStruct(1, 0);
+            var element = new PointReadonlyStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 Calculate(element);

@@ -6,13 +6,15 @@ using CoreTester.Configuration;
 namespace CoreTester.Benchmarks
 {
     [Config(typeof(Config))]
-    public class CollectionsBenchmark
+    public class CreateCollectionsBenchmark
     {
         private PointClass[] arrayOfClasses;
         private PointStruct[] arrayOfStructs;
+        private PointReadonlyStruct[] arrayOfReadonlyStructs;
 
         private List<PointClass> listOfClasses;
         private List<PointStruct> listOfStructs;
+        private List<PointReadonlyStruct> listOfReadonlyStructs;
 
         [Params(10_000_000)]
         public int ElementsCount { get; set; }
@@ -22,7 +24,7 @@ namespace CoreTester.Benchmarks
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                arrayOfClasses[i] = new PointClass { X = i, Y = i };
+                arrayOfClasses[i] = new PointClass(i, i);
             }
 
             return arrayOfClasses;
@@ -33,10 +35,21 @@ namespace CoreTester.Benchmarks
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                arrayOfStructs[i] = new PointStruct { X = i, Y = i };
+                arrayOfStructs[i] = new PointStruct(i, i);
             }
 
             return arrayOfStructs;
+        }
+
+        [Benchmark]
+        public PointReadonlyStruct[] CreateArrayOfReadonlyStructs()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                arrayOfReadonlyStructs[i] = new PointReadonlyStruct(i, i);
+            }
+
+            return arrayOfReadonlyStructs;
         }
 
         [Benchmark]
@@ -44,7 +57,7 @@ namespace CoreTester.Benchmarks
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                listOfClasses.Add(new PointClass { X = i, Y = i });
+                listOfClasses.Add(new PointClass(i, i));
             }
 
             return listOfClasses;
@@ -55,10 +68,21 @@ namespace CoreTester.Benchmarks
         {
             for (int i = 0; i < ElementsCount; i++)
             {
-                listOfStructs.Add(new PointStruct { X = i, Y = i });
+                listOfStructs.Add(new PointStruct(i, i));
             }
 
             return listOfStructs;
+        }
+
+        [Benchmark]
+        public List<PointReadonlyStruct> CreateListOfReadonlyStructs()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                listOfReadonlyStructs.Add(new PointReadonlyStruct(i, i));
+            }
+
+            return listOfReadonlyStructs;
         }
 
         [GlobalSetup]
@@ -66,8 +90,11 @@ namespace CoreTester.Benchmarks
         {
             arrayOfClasses = new PointClass[ElementsCount];
             arrayOfStructs = new PointStruct[ElementsCount];
+            arrayOfReadonlyStructs = new PointReadonlyStruct[ElementsCount];
+
             listOfClasses = new List<PointClass>(ElementsCount);
             listOfStructs = new List<PointStruct>(ElementsCount);
+            listOfReadonlyStructs = new List<PointReadonlyStruct>(ElementsCount);
         }
     }
 }

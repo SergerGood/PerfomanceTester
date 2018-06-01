@@ -13,7 +13,7 @@ namespace CoreTester
         [Benchmark]
         public PointClass Classes()
         {
-            PointClass element = new PointClass { X = 1 };
+            PointClass element = new PointClass(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 CopyClass(element);
@@ -25,7 +25,7 @@ namespace CoreTester
         [Benchmark]
         public PointStruct Structes()
         {
-            PointStruct element = new PointStruct { X = 1 };
+            PointStruct element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 CopyStruct(element);
@@ -37,7 +37,7 @@ namespace CoreTester
         [Benchmark]
         public PointStruct RefStructes()
         {
-            PointStruct element = new PointStruct { X = 1 };
+            PointStruct element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 CopyRefStruct(element);
