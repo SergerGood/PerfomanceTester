@@ -21,57 +21,57 @@ namespace CoreTester.Benchmarks
         public int ElementsCount { get; set; }
 
         [Benchmark]
-        public IEnumerable<PointClass> WhereArrayOfClasses()
+        public bool WhereArrayOfClasses()
         {
-            return arrayOfClasses
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointClass(ElementsCount, ElementsCount);
+            var result = arrayOfClasses.Contains(element);
+
+            return result;
         }
 
         [Benchmark]
-        public IEnumerable<PointStruct> WhereArrayOfStructs()
+        public bool WhereArrayOfStructs()
         {
-            return arrayOfStructs
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointStruct(ElementsCount, ElementsCount);
+            var result = arrayOfStructs.Contains(element);
+
+            return result;
         }
 
         [Benchmark]
-        public IEnumerable<PointReadonlyStruct> WhereArrayOfReadonlyStructs()
+        public bool WhereArrayOfReadonlyStructs()
         {
-            return arrayOfReadonlyStructs
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointReadonlyStruct(ElementsCount, ElementsCount);
+            var result = arrayOfReadonlyStructs.Contains(element);
+
+            return result;
         }
 
         [Benchmark]
-        public IEnumerable<PointClass> WhereListOfClasses()
+        public bool WhereListOfClasses()
         {
-            return listOfClasses
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointClass(ElementsCount, ElementsCount);
+            var result = listOfClasses.Contains(element);
+
+            return result;
         }
 
         [Benchmark]
-        public IEnumerable<PointStruct> WhereListOfStructs()
+        public bool WhereListOfStructs()
         {
-            return listOfStructs
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointStruct(ElementsCount, ElementsCount);
+            var result = listOfStructs.Contains(element);
+
+            return result;
         }
 
         [Benchmark]
-        public IEnumerable<PointReadonlyStruct> WhereListOfReadonlyStructs()
+        public bool WhereListOfReadonlyStructs()
         {
-            return listOfReadonlyStructs
-                .Where(element => element.X > ElementsCount / 2)
-                .Where(element => element.Y > ElementsCount / 2)
-                .ToList();
+            var element = new PointReadonlyStruct(ElementsCount, ElementsCount);
+            var result = listOfReadonlyStructs.Contains(element);
+
+            return result;
         }
 
         [GlobalSetup]

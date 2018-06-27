@@ -2,7 +2,7 @@
 
 namespace CoreTester
 {
-    public struct PointStruct
+    public struct PointStruct : IEquatable<PointStruct>
     {
         public PointStruct(int x, int y)
         {
@@ -12,5 +12,15 @@ namespace CoreTester
 
         public int X { get; }
         public int Y { get; }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public bool Equals(PointStruct other)
+        {
+            return X == other.X && Y == other.Y;
+        }
     }
 }
