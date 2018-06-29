@@ -2,7 +2,7 @@
 
 namespace CoreTester
 {
-    public readonly struct PointReadonlyStruct : IEquatable<PointStruct>
+    public readonly struct PointReadonlyStruct : IEquatable<PointReadonlyStruct>
     {
         public PointReadonlyStruct(int x, int y)
         {
@@ -13,12 +13,7 @@ namespace CoreTester
         public int X { get; }
         public int Y { get; }
 
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public bool Equals(PointStruct other)
+        public bool Equals(PointReadonlyStruct other)
         {
             return X == other.X && Y == other.Y;
         }
