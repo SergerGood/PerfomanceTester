@@ -3,8 +3,9 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Toolchains.CsProj;
+using Core;
 
-namespace CoreTester.Configuration
+namespace TypeTester.Configuration
 
 {
     public class Config : ManualConfig
@@ -15,21 +16,12 @@ namespace CoreTester.Configuration
 
             Job clr471Job = Job.Clr
                 .With(CsProjClassicNetToolchain.Net471)
-                .WithDefaultJob();
+                .WithColdStartJob();
+            Job clr472Job = Configurator.GetColdStartClr472Job();
+            Job core20Job = Configurator.GetColdStartCore20Job();
+            Job core21Job = Configurator.GetColdStartCore21Job();
 
-            //Job clr472Job = Job.Clr
-            //    .With(CsProjClassicNetToolchain.Net472)
-            //    .WithDefaultJob();
-
-            Job core20Job = Job.Core
-                .With(CsProjCoreToolchain.NetCoreApp20)
-                .WithDefaultJob();
-
-            Job core21Job = Job.Core
-                .With(CsProjCoreToolchain.NetCoreApp21)
-                .WithDefaultJob();
-
-            Add(core20Job, core21Job, clr471Job);
+            Add(core20Job, core21Job, clr471Job, clr472Job);
         }
     }
 }

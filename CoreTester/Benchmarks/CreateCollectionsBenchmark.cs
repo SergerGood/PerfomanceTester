@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
-using CoreTester.Configuration;
+using TypeTester.Configuration;
 
-namespace CoreTester.Benchmarks
+namespace TypeTester.Benchmarks
 {
     [Config(typeof(Config))]
     public class CreateCollectionsBenchmark

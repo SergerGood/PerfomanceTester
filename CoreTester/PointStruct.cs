@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreTester
+namespace TypeTester
 {
     public struct PointStruct : IEquatable<PointStruct>
     {
@@ -12,11 +12,6 @@ namespace CoreTester
 
         public int X { get; }
         public int Y { get; }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
 
         public bool Equals(PointStruct other)
         {

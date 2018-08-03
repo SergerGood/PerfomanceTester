@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreTester
+namespace TypeTester
 {
     public class PointClass
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using BenchmarkDotNet.Running;
-using TypeTester.Benchmarks;
+using SpanTester.Benchmarks;
 
-namespace TypeTester
+namespace SpanTester
 {
     internal class Program
     {
@@ -10,10 +10,7 @@ namespace TypeTester
         {
             var switcher = new BenchmarkSwitcher(new[]
             {
-                typeof(CreateCollectionsBenchmark),
-                typeof(UseCollectionsBenchmark),
-                typeof(CopyBenchmark),
-                typeof(CopyWithUseBenchmark)
+                typeof(SpanBenchmark)
             });
 
             switcher.Run(args);

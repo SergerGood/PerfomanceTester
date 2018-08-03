@@ -1,8 +1,8 @@
 ﻿using System;
 using BenchmarkDotNet.Attributes;
-using CoreTester.Configuration;
+using TypeTester.Configuration;
 
-namespace CoreTester
+namespace TypeTester.Benchmarks
 {
     [Config(typeof(Config))]
     public class CopyBenchmark
@@ -23,24 +23,24 @@ namespace CoreTester
         }
 
         [Benchmark]
-        public PointStruct Structes()
-        {
-            PointStruct element = new PointStruct(1, 1);
-            for (int i = 0; i < ElementsCount; i++)
-            {
-                CopyStruct(element);
-            }
-
-            return element;
-        }
-
-        [Benchmark]
         public PointStruct RefStructes()
         {
             PointStruct element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
                 CopyRefStruct(element);
+            }
+
+            return element;
+        }
+
+        [Benchmark]
+        public PointStruct Structes()
+        {
+            PointStruct element = new PointStruct(1, 1);
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                CopyStruct(element);
             }
 
             return element;
