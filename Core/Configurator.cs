@@ -1,4 +1,5 @@
 ﻿using System;
+using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Toolchains.CsProj;
 
@@ -17,7 +18,10 @@ namespace Core
         {
             return Job.Clr
                 .With(CsProjClassicNetToolchain.Net472)
-                .WithColdStartJob();
+                .With(Platform.X64)
+                .WithLaunchCount(3)
+                .WithIterationCount(5)
+                .WithWarmupCount(3);
         }
 
         public static Job GetColdStartCore20Job()
@@ -31,7 +35,10 @@ namespace Core
         {
             return Job.Clr
                 .With(CsProjCoreToolchain.NetCoreApp21)
-                .WithColdStartJob();
+                .With(Platform.X64)
+                .WithLaunchCount(2)
+                .WithIterationCount(4)
+                .WithWarmupCount(2);
         }
 
         public static Job GetDefaultClr471Job()

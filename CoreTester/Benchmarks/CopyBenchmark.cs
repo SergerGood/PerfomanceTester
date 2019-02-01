@@ -23,19 +23,7 @@ namespace TypeTester.Benchmarks
         }
 
         [Benchmark]
-        public PointStruct RefStructes()
-        {
-            PointStruct element = new PointStruct(1, 1);
-            for (int i = 0; i < ElementsCount; i++)
-            {
-                CopyRefStruct(element);
-            }
-
-            return element;
-        }
-
-        [Benchmark]
-        public PointStruct Structes()
+        public PointStruct Structs()
         {
             PointStruct element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
@@ -46,17 +34,46 @@ namespace TypeTester.Benchmarks
             return element;
         }
 
+        [Benchmark]
+        public PointStruct StructsByRef()
+        {
+            PointStruct element = new PointStruct(1, 1);
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                CopyStructByRef(ref element);
+            }
+
+            return element;
+        }
+
+        [Benchmark]
+        public PointReadonlyStruct ReadonlyStructs()
+        {
+            PointReadonlyStruct element = new PointReadonlyStruct(1, 1);
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                CopyRefStruct(element);
+            }
+
+            return element;
+        }
+
         private PointClass CopyClass(PointClass element)
         {
             return element;
         }
 
-        private PointStruct CopyRefStruct(in PointStruct element)
+        private PointReadonlyStruct CopyRefStruct(in PointReadonlyStruct element)
         {
             return element;
         }
 
         private PointStruct CopyStruct(PointStruct element)
+        {
+            return element;
+        }
+
+        private PointStruct CopyStructByRef(ref PointStruct element)
         {
             return element;
         }

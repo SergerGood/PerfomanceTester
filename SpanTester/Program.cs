@@ -10,7 +10,9 @@ namespace SpanTester
         {
             var switcher = new BenchmarkSwitcher(new[]
             {
-                typeof(SpanBenchmark)
+                typeof(CharSpanBenchmark),
+                typeof(ArraySpanBenchmark),
+                typeof(SubstringBenchmark)
             });
 
             switcher.Run(args);

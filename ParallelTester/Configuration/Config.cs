@@ -2,10 +2,9 @@
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Toolchains.CsProj;
 using Core;
 
-namespace TypeTester.Configuration
+namespace ParallelTester.Configuration
 
 {
     public class Config : ManualConfig
@@ -14,9 +13,6 @@ namespace TypeTester.Configuration
         {
             Add(MemoryDiagnoser.Default);
 
-            //Job clr471Job = Configurator.GetColdStartClr471Job();
-            //Job clr472Job = Configurator.GetColdStartClr472Job();
-            //Job core20Job = Configurator.GetColdStartCore20Job();
             Job core21Job = Configurator.GetColdStartCore21Job();
 
             Add(core21Job);

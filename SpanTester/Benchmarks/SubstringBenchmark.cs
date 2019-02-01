@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using SpanTester.Configuration;
@@ -6,7 +7,7 @@ using SpanTester.Configuration;
 namespace SpanTester.Benchmarks
 {
     [Config(typeof(Config))]
-    public class SpanBenchmark
+    public class SubstringBenchmark
     {
         private string text;
 
@@ -17,18 +18,19 @@ namespace SpanTester.Benchmarks
         public void Setup()
         {
             text = new string(Enumerable.Repeat('a', CharactersCount).ToArray());
+            text = "content-length:" + text;
         }
 
         [Benchmark]
-        public string Substring()
+        public int Slice()
         {
-            return text.Substring(0, text.Length / 2);
+            return int.Parse(text.AsSpan().Slice(15));
         }
 
         [Benchmark]
-        public string Slice()
+        public int Substring()
         {
-            return text.AsSpan().Slice(0, text.Length / 2).ToString();
+            return int.Parse(text.Substring(15)); 
         }
     }
 }

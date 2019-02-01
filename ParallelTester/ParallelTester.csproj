@@ -1,12 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Platforms>x64</Platforms>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.1|x64'">
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -16,6 +12,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.2.0\ref\netcoreapp2.2\System.Threading.Tasks.Parallel.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

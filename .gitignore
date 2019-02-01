@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 CoreTester/Benchmarks/
 CoreTester/BenchmarkDotNet.Artifacts/
+/GeneratorTester
+/Generator2Tester

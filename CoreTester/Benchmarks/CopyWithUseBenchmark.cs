@@ -23,7 +23,7 @@ namespace TypeTester.Benchmarks
         }
 
         [Benchmark]
-        public PointStruct Structes()
+        public PointStruct Structs()
         {
             var element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
@@ -35,19 +35,19 @@ namespace TypeTester.Benchmarks
         }
 
         [Benchmark]
-        public PointStruct RefStructes()
+        public PointStruct StructsByRef()
         {
             var element = new PointStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
             {
-                CalculateRef(element);
+                CalculateByRef(ref element);
             }
 
             return element;
         }
 
         [Benchmark]
-        public PointReadonlyStruct RefReadonlyStructes()
+        public PointReadonlyStruct ReadonlyStructs()
         {
             var element = new PointReadonlyStruct(1, 1);
             for (int i = 0; i < ElementsCount; i++)
@@ -72,6 +72,13 @@ namespace TypeTester.Benchmarks
             return element;
         }
 
+        private PointStruct CalculateByRef(ref PointStruct element)
+        {
+            int calc = element.X + element.Y;
+
+            return element;
+        }
+
         private PointReadonlyStruct Calculate(in PointReadonlyStruct element)
         {
             int calc = element.X + element.Y;
@@ -79,11 +86,5 @@ namespace TypeTester.Benchmarks
             return element;
         }
 
-        private PointStruct CalculateRef(in PointStruct element)
-        {
-            int calc = element.X + element.Y;
-
-            return element;
-        }
     }
 }
