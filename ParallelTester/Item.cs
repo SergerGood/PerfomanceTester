@@ -35,5 +35,15 @@ namespace TypeTester
                 return (Id * 397) ^ (Links != null ? Links.GetHashCode() : 0);
             }
         }
+
+        public static bool operator ==(Item left, Item right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Item left, Item right)
+        {
+            return !(left == right);
+        }
     }
 }

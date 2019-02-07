@@ -103,7 +103,7 @@ namespace ParallelTester.Benchmarks
             nodeIndexMap[item.Id] = new int[1] { i + 1 };
         }
 
-        private void Process(Item node)
+        private void Process(in Item node)
         {
             int i = nodeIndexMap[node.Id][0];
 
