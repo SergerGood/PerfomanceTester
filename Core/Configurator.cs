@@ -31,10 +31,10 @@ namespace Core
                 .WithColdStartJob();
         }
 
-        public static Job GetColdStartCore21Job()
+        public static Job GetColdStartCore22Job()
         {
             return Job.Clr
-                .With(CsProjCoreToolchain.NetCoreApp21)
+                .With(CsProjCoreToolchain.NetCoreApp22)
                 .With(Platform.X64)
                 .WithLaunchCount(2)
                 .WithIterationCount(4)

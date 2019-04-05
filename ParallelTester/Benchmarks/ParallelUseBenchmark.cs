@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using ParallelTester.Configuration;
@@ -74,13 +75,30 @@ namespace ParallelTester.Benchmarks
         [Benchmark]
         public int[][] ParallelForEachPartition()
         {
-            OrderablePartitioner<Item> orderablePartitioner = Partitioner.Create(nodes);
+            OrderablePartitioner<Item> orderablePartitioner = Partitioner.Create(nodes, true);
 
             Parallel.ForEach(orderablePartitioner,
                 parallelOptions,
                 node =>
                 {
                     Process(node);
+                });
+
+            return nodeIndexMap;
+        }
+
+        [Benchmark]
+        public int[][] ParallelForEachPartition2()
+        {
+            OrderablePartitioner<Tuple<int, int>> orderablePartitioner = Partitioner.Create(0, nodes.Length, 100);
+
+            Parallel.ForEach(orderablePartitioner,
+                node =>
+                {
+                    for (int i = node.Item1; i < node.Item2; i++)
+                    {
+                        Process(nodes[i]);
+                    }
                 });
 
             return nodeIndexMap;
@@ -100,7 +118,7 @@ namespace ParallelTester.Benchmarks
 
             linksBuffer[index >> 3] |= (byte)(0x80 >> (index & 0x7));
 
-            nodeIndexMap[item.Id] = new int[1] { i + 1 };
+            nodeIndexMap[item.Id] = new int[] { i + 1 };
         }
 
         private void Process(in Item node)

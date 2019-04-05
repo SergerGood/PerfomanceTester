@@ -17,6 +17,10 @@ namespace TypeTester
             });
 
             switcher.Run(args);
+
+            //var asd = new CreateCollectionsBenchmark();
+            //asd.GlobalSetup();
+            //asd.CreateArrayOfStructs();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ParallelTester
 
             switcher.Run(args);
 
-            //var asd = new ParallelUseBenchmark();
+            //var asd = new ParallelGenerateBenchmark();
             //asd.ElementsCount = 65000;
             //asd.LinkedElementsCount = 2000;
             //asd.GlobalSetup();
