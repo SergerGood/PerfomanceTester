@@ -9,14 +9,14 @@ namespace Core
     {
         public static Job GetColdStartClr471Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjClassicNetToolchain.Net471)
                 .WithColdStartJob();
         }
 
         public static Job GetColdStartClr472Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjClassicNetToolchain.Net472)
                 .With(Platform.X64)
                 .WithLaunchCount(3)
@@ -26,14 +26,14 @@ namespace Core
 
         public static Job GetColdStartCore20Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjCoreToolchain.NetCoreApp20)
                 .WithColdStartJob();
         }
 
         public static Job GetColdStartCore22Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjCoreToolchain.NetCoreApp22)
                 .With(Platform.X64)
                 .WithLaunchCount(2)
@@ -43,28 +43,28 @@ namespace Core
 
         public static Job GetDefaultClr471Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjClassicNetToolchain.Net471)
                 .WithDefaultJob();
         }
 
         public static Job GetDefaultClr472Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjClassicNetToolchain.Net472)
                 .WithDefaultJob();
         }
 
         public static Job GetDefaultCore20Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjCoreToolchain.NetCoreApp20)
                 .WithDefaultJob();
         }
 
         public static Job GetDefaultCore21Job()
         {
-            return Job.Clr
+            return Job.Default
                 .With(CsProjCoreToolchain.NetCoreApp21)
                 .WithDefaultJob();
         }
