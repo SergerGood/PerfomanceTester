@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using TypeTester.Configuration;
@@ -16,6 +17,8 @@ namespace TypeTester.Benchmarks
         private List<PointClass> listOfClasses;
         private List<PointStruct> listOfStructs;
         private List<PointReadonlyStruct> listOfReadonlyStructs;
+
+        private ImmutableList<PointStruct> immutableListOfClasses;
 
         [Params(10_000_000)]
         public int ElementsCount { get; set; }
@@ -74,6 +77,15 @@ namespace TypeTester.Benchmarks
             return result;
         }
 
+        [Benchmark]
+        public bool WhereImmutableListOfClasses()
+        {
+            var element = new PointStruct(ElementsCount, ElementsCount);
+            var result = immutableListOfClasses.Contains(element);
+
+            return result;
+        }
+
         [GlobalSetup]
         public void GlobalSetup()
         {
@@ -85,34 +97,20 @@ namespace TypeTester.Benchmarks
             listOfStructs = new List<PointStruct>(ElementsCount);
             listOfReadonlyStructs = new List<PointReadonlyStruct>(ElementsCount);
 
+            var builder = ImmutableList.CreateBuilder<PointStruct>();
+
             for (int i = 0; i < ElementsCount; i++)
             {
                 arrayOfClasses[i] = new PointClass(i, i);
-            }
-
-            for (int i = 0; i < ElementsCount; i++)
-            {
                 arrayOfStructs[i] = new PointStruct(i, i);
-            }
-
-            for (int i = 0; i < ElementsCount; i++)
-            {
                 arrayOfReadonlyStructs[i] = new PointReadonlyStruct(i, i);
-            }
 
-            for (int i = 0; i < ElementsCount; i++)
-            {
                 listOfClasses.Add(new PointClass(i, i));
-            }
-
-            for (int i = 0; i < ElementsCount; i++)
-            {
                 listOfStructs.Add(new PointStruct(i, i));
-            }
-
-            for (int i = 0; i < ElementsCount; i++)
-            {
                 listOfReadonlyStructs.Add(new PointReadonlyStruct(i, i));
+
+                builder.Add(new PointStruct(i, i));
+                immutableListOfClasses = builder.ToImmutable();
             }
         }
     }

@@ -68,5 +68,12 @@ namespace Core
                 .With(CsProjCoreToolchain.NetCoreApp21)
                 .WithDefaultJob();
         }
+
+        public static Job GetDefaultCore31Job()
+        {
+            return Job.Default
+                .With(CsProjCoreToolchain.NetCoreApp31)
+                .WithDefaultJob();
+        }
     }
 }

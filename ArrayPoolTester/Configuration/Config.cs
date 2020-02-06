@@ -13,9 +13,9 @@ namespace ArrayPoolTester.Configuration
         {
             Add(MemoryDiagnoser.Default);
 
-            Job core22Job = Configurator.GetColdStartCore22Job();
+            Job newJob = Configurator.GetDefaultCore31Job();
 
-            Add(core22Job);
+            Add(newJob);
         }
     }
 }
