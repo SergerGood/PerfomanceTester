@@ -11,11 +11,11 @@ namespace ArrayPoolTester.Configuration
     {
         public Config()
         {
-            Add(MemoryDiagnoser.Default);
+            AddDiagnoser(MemoryDiagnoser.Default);
 
             Job newJob = Configurator.GetDefaultCore31Job();
 
-            Add(newJob);
+            AddJob(newJob);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace Core
     {
         public static Job WithColdStartJob(this Job job)
         {
-            return job.With(RunStrategy.ColdStart)
-                .With(Platform.X64)
+            return job.WithColdStartJob()
+                .WithPlatform(Platform.X64)
                 .WithLaunchCount(1)
                 .WithIterationCount(3)
                 .WithWarmupCount(0);
@@ -19,7 +19,7 @@ namespace Core
         public static Job WithDefaultJob(this Job job)
         {
             return job
-                .With(Platform.X64)
+                .WithPlatform(Platform.X64)
                 .WithLaunchCount(1)
                 .WithIterationCount(3)
                 .WithWarmupCount(0);

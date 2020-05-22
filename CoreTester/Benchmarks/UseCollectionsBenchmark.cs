@@ -18,9 +18,9 @@ namespace TypeTester.Benchmarks
         private List<PointStruct> listOfStructs;
         private List<PointReadonlyStruct> listOfReadonlyStructs;
 
-        private ImmutableList<PointStruct> immutableListOfClasses;
+        private ImmutableArray<PointStruct> immutableArrayOfStructs;
 
-        [Params(10_000_000)]
+        [Params(1_000)]
         public int ElementsCount { get; set; }
 
         [Benchmark]
@@ -78,10 +78,10 @@ namespace TypeTester.Benchmarks
         }
 
         [Benchmark]
-        public bool WhereImmutableListOfClasses()
+        public bool WhereImmutableArrayOfStructs()
         {
             var element = new PointStruct(ElementsCount, ElementsCount);
-            var result = immutableListOfClasses.Contains(element);
+            var result = immutableArrayOfStructs.Contains(element);
 
             return result;
         }
@@ -97,8 +97,6 @@ namespace TypeTester.Benchmarks
             listOfStructs = new List<PointStruct>(ElementsCount);
             listOfReadonlyStructs = new List<PointReadonlyStruct>(ElementsCount);
 
-            var builder = ImmutableList.CreateBuilder<PointStruct>();
-
             for (int i = 0; i < ElementsCount; i++)
             {
                 arrayOfClasses[i] = new PointClass(i, i);
@@ -109,8 +107,7 @@ namespace TypeTester.Benchmarks
                 listOfStructs.Add(new PointStruct(i, i));
                 listOfReadonlyStructs.Add(new PointReadonlyStruct(i, i));
 
-                builder.Add(new PointStruct(i, i));
-                immutableListOfClasses = builder.ToImmutable();
+                immutableArrayOfStructs = ImmutableArray.CreateRange(arrayOfStructs);
             }
         }
     }

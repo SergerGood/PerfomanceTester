@@ -13,9 +13,9 @@ namespace ParallelTester.Configuration
         {
             Add(MemoryDiagnoser.Default);
 
-            Job core21Job = Configurator.GetColdStartCore22Job();
+            Job job = Configurator.GetDefaultCore31Job();
 
-            Add(core21Job);
+            Add(job);
         }
     }
 }

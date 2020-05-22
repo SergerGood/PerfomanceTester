@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelTester", "ParallelT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayPoolTester", "ArrayPoolTester\ArrayPoolTester.csproj", "{46EB57E1-CCDC-4C92-A6B2-586FE9CB2559}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadOnlyStructTester", "ReadOnlyStructTester\ReadOnlyStructTester.csproj", "{6231C8EE-871B-4D9E-902D-9DE6A9BE02CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadOnlyStructTester", "ReadOnlyStructTester\ReadOnlyStructTester.csproj", "{6231C8EE-871B-4D9E-902D-9DE6A9BE02CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncEnumerableTester", "AsyncEnumerableTester\AsyncEnumerableTester.csproj", "{1A977EA1-A3AA-4733-9785-0687C1554B62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,14 @@ Global
 		{6231C8EE-871B-4D9E-902D-9DE6A9BE02CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6231C8EE-871B-4D9E-902D-9DE6A9BE02CF}.Release|x64.ActiveCfg = Release|Any CPU
 		{6231C8EE-871B-4D9E-902D-9DE6A9BE02CF}.Release|x64.Build.0 = Release|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Debug|x64.Build.0 = Debug|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Release|x64.ActiveCfg = Release|Any CPU
+		{1A977EA1-A3AA-4733-9785-0687C1554B62}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
