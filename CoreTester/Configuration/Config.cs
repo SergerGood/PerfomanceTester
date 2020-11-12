@@ -16,7 +16,7 @@ namespace TypeTester.Configuration
             //Job clr472Job = Configurator.GetColdStartClr472Job();
             //Job core20Job = Configurator.GetColdStartCore20Job();
 
-            AddJob(Configurator.GetDefaultCore31Job());
+            AddJob(Configurator.GetDefaultCore50Job());
         }
     }
 }

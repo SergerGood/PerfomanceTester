@@ -15,7 +15,7 @@ namespace AsyncEnumerableTester.Configuration
             AddDiagnoser(MemoryDiagnoser.Default);
 
             Job job = Job.InProcess
-                .WithToolchain(CsProjCoreToolchain.NetCoreApp31)
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp50)
                 .WithPlatform(Platform.X64);
                 //.WithLaunchCount(2)
                 //.WithIterationCount(3)

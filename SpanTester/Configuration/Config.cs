@@ -1,8 +1,9 @@
 ﻿using System;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
+using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
-using Core;
+using BenchmarkDotNet.Toolchains.CsProj;
 
 namespace SpanTester.Configuration
 
@@ -11,11 +12,16 @@ namespace SpanTester.Configuration
     {
         public Config()
         {
-            Add(MemoryDiagnoser.Default);
+            AddDiagnoser(MemoryDiagnoser.Default);
 
-            Job core21Job = Configurator.GetDefaultCore21Job();
+            Job job = Job.InProcess
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp50)
+                .WithPlatform(Platform.X64)
+                .WithLaunchCount(2)
+                .WithIterationCount(3)
+                .WithWarmupCount(1);
 
-            Add(core21Job);
+            AddJob(job);
         }
     }
 }

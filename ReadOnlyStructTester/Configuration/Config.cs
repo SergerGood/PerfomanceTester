@@ -12,25 +12,25 @@ namespace ReadOnlyStructTester.Configuration
     {
         public Config()
         {
-            Add(MemoryDiagnoser.Default);
+            AddDiagnoser(MemoryDiagnoser.Default);
 
             Job job1 = Job.Default
-                .With(CsProjCoreToolchain.NetCoreApp31)
-                .With(Platform.X64)
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp50)
+                .WithPlatform(Platform.X64)
                 .WithLaunchCount(2)
                 .WithIterationCount(3)
                 .WithWarmupCount(1);
 
-            Add(job1);
+            AddJob(job1);
 
             Job job2 = Job.Default
-                .With(CsProjCoreToolchain.NetCoreApp22)
-                .With(Platform.X64)
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp22)
+                .WithPlatform(Platform.X64)
                 .WithLaunchCount(2)
                 .WithIterationCount(3)
                 .WithWarmupCount(1);
 
-            Add(job2);
+            AddJob(job2);
         }
     }
 }

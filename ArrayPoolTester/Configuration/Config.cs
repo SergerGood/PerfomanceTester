@@ -13,7 +13,7 @@ namespace ArrayPoolTester.Configuration
         {
             AddDiagnoser(MemoryDiagnoser.Default);
 
-            Job newJob = Configurator.GetDefaultCore31Job();
+            Job newJob = Configurator.GetDefaultCore50Job();
 
             AddJob(newJob);
         }

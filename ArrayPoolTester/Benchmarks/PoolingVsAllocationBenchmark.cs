@@ -8,7 +8,7 @@ namespace ArrayPoolTester.Benchmarks
     [Config(typeof(Config))]
     public class PoolingVsAllocationBenchmark
     {
-        [Params(20, 100, 1000, 10000, 100000)]
+        [Params(20, 100, 1000)]
         public int N;
 
         private readonly ArrayPool<byte> pool = ArrayPool<byte>.Shared;
