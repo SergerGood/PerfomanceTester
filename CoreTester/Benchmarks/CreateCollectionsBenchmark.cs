@@ -11,12 +11,14 @@ namespace TypeTester.Benchmarks
         private PointClass[] arrayOfClasses;
         private PointStruct[] arrayOfStructs;
         private PointReadonlyStruct[] arrayOfReadonlyStructs;
+        private PersonRecord[] arrayOfRecords;
 
         private List<PointClass> listOfClasses;
         private List<PointStruct> listOfStructs;
         private List<PointReadonlyStruct> listOfReadonlyStructs;
+        private List<PersonRecord> listOfRecords;
 
-        [Params(10_000_000)]
+        [Params(1_000_000)]
         public int ElementsCount { get; set; }
 
         [Benchmark]
@@ -53,6 +55,17 @@ namespace TypeTester.Benchmarks
         }
 
         [Benchmark]
+        public PersonRecord[] CreateArrayOfRecords()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                arrayOfRecords[i] = new PersonRecord { X = i, Y = i };
+            }
+
+            return arrayOfRecords;
+        }
+
+        [Benchmark]
         public List<PointClass> CreateListOfClasses()
         {
             for (int i = 0; i < ElementsCount; i++)
@@ -85,16 +98,30 @@ namespace TypeTester.Benchmarks
             return listOfReadonlyStructs;
         }
 
+        [Benchmark]
+        public List<PersonRecord> CreateListOfRecords()
+        {
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                listOfRecords.Add(new PersonRecord { X = i, Y = i });
+            }
+
+            return listOfRecords;
+        }
+
+
         [GlobalSetup]
         public void GlobalSetup()
         {
             arrayOfClasses = new PointClass[ElementsCount];
             arrayOfStructs = new PointStruct[ElementsCount];
             arrayOfReadonlyStructs = new PointReadonlyStruct[ElementsCount];
+            arrayOfRecords = new PersonRecord[ElementsCount];
 
             listOfClasses = new List<PointClass>(ElementsCount);
             listOfStructs = new List<PointStruct>(ElementsCount);
             listOfReadonlyStructs = new List<PointReadonlyStruct>(ElementsCount);
+            listOfRecords = new List<PersonRecord>(ElementsCount);
         }
     }
 }

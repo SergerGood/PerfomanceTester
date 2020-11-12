@@ -7,7 +7,7 @@ namespace TypeTester.Benchmarks
     [Config(typeof(Config))]
     public class CopyBenchmark
     {
-        [Params(100_000_000)]
+        [Params(1_000_000)]
         public int ElementsCount { get; set; }
 
         [Benchmark]
@@ -58,6 +58,18 @@ namespace TypeTester.Benchmarks
             return element;
         }
 
+        [Benchmark]
+        public PersonRecord Records()
+        {
+            PersonRecord element = new PersonRecord{ X = 1, Y = 1};
+            for (int i = 0; i < ElementsCount; i++)
+            {
+                CopyRecord(element);
+            }
+
+            return element;
+        }
+
         private PointClass CopyClass(PointClass element)
         {
             return element;
@@ -74,6 +86,11 @@ namespace TypeTester.Benchmarks
         }
 
         private PointStruct CopyStructByRef(ref PointStruct element)
+        {
+            return element;
+        }
+
+        private PersonRecord CopyRecord(PersonRecord element)
         {
             return element;
         }

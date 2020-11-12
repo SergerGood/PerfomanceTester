@@ -2,14 +2,8 @@
 
 namespace TypeTester
 {
-    public class PointClass
+    public record PersonRecord
     {
-        public PointClass(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
         public int X { get; init; }
         public int Y { get; init; }
     }
