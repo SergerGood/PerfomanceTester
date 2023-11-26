@@ -69,10 +69,10 @@ namespace Core
                 .WithDefaultJob();
         }
 
-        public static Job GetDefaultCore50Job()
+        public static Job GetDefaultCore80Job()
         {
             return Job.Default
-                .WithToolchain(CsProjCoreToolchain.NetCoreApp50)
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp80)
                 .WithDefaultJob();
         }
     }

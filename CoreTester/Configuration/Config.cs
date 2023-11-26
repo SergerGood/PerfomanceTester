@@ -11,12 +11,7 @@ namespace TypeTester.Configuration
         public Config()
         {
             AddDiagnoser(MemoryDiagnoser.Default);
-
-            //Job clr471Job = Configurator.GetColdStartClr471Job();
-            //Job clr472Job = Configurator.GetColdStartClr472Job();
-            //Job core20Job = Configurator.GetColdStartCore20Job();
-
-            AddJob(Configurator.GetDefaultCore50Job());
+            AddJob(Configurator.GetDefaultCore80Job());
         }
     }
 }

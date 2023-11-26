@@ -15,22 +15,13 @@ namespace ReadOnlyStructTester.Configuration
             AddDiagnoser(MemoryDiagnoser.Default);
 
             Job job1 = Job.Default
-                .WithToolchain(CsProjCoreToolchain.NetCoreApp50)
+                .WithToolchain(CsProjCoreToolchain.NetCoreApp80)
                 .WithPlatform(Platform.X64)
                 .WithLaunchCount(2)
                 .WithIterationCount(3)
                 .WithWarmupCount(1);
 
             AddJob(job1);
-
-            Job job2 = Job.Default
-                .WithToolchain(CsProjCoreToolchain.NetCoreApp22)
-                .WithPlatform(Platform.X64)
-                .WithLaunchCount(2)
-                .WithIterationCount(3)
-                .WithWarmupCount(1);
-
-            AddJob(job2);
         }
     }
 }
