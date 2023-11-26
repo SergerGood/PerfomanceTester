@@ -13,7 +13,8 @@ namespace TypeTester
                 typeof(CreateCollectionsBenchmark),
                 typeof(UseCollectionsBenchmark),
                 typeof(CopyBenchmark),
-                typeof(CopyWithUseBenchmark)
+                typeof(CopyWithUseBenchmark),
+                typeof(DictionaryBenchmark)
             });
 
             switcher.Run(args);

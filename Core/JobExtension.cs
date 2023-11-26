@@ -22,7 +22,7 @@ namespace Core
                 .WithPlatform(Platform.X64)
                 .WithLaunchCount(1)
                 .WithIterationCount(3)
-                .WithWarmupCount(0);
+                .WithWarmupCount(1);
         }
     }
 }

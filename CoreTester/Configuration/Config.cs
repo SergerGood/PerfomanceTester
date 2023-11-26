@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
+using BenchmarkDotNet.Reports;
 using Core;
 
 namespace TypeTester.Configuration
@@ -12,6 +13,8 @@ namespace TypeTester.Configuration
         {
             AddDiagnoser(MemoryDiagnoser.Default);
             AddJob(Configurator.GetDefaultCore80Job());
+
+            SummaryStyle = SummaryStyle.Default.WithRatioStyle(RatioStyle.Percentage);
         }
     }
 }
